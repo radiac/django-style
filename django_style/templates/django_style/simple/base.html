@@ -1,0 +1,65 @@
+{% load static %}<!doctype html>
+<html lang="en-us" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block head_title %}
+        {% if title %}{{ title }}{% if site_title %} - {% endif %}{% endif %}
+        {{ site_title }}
+      {% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "django_style/simple/styles.css" %}">
+  </head>
+  <body{% if STYLE_IS_APP %} class="app"{% endif %}>
+    {% block header %}
+      <header>
+        {% if site_title %}
+          <h1>{{ site_title }}</h1>
+        {% endif %}
+
+        {% if site_nav %}
+          <label for="nav_toggle" aria-label="Toggle menu">
+            <input id="nav_toggle" type="checkbox">
+          </label>
+          <nav>
+            <ul aria-hidden="true">
+              {% for nav_item in site_nav %}
+                <li{% if request.path == nav_item.url %} class="active"{% endif %}>
+                  <a href="{{ nav_item.url }}">{{ nav_item.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+      </header>
+    {% endblock %}
+
+    <main>
+      {% block main %}
+        {% block title %}
+          <h1>{{ title }}</h1>
+        {% endblock %}
+        {% block content %}{% endblock %}
+      {% endblock %}
+    </main>
+
+    {% block footer %}
+      <footer>
+        {% if footer_nav %}
+          <nav>
+            <ul>
+              {% for nav_item in footer_nav %}
+                <li{% if request.path == nav_item.url %} class="active"{% endif %}>
+                  <a href="{{ nav_item.url }}">{{ nav_item.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+      </footer>
+    {% endblock %}
+
+  </body>
+</html>
+

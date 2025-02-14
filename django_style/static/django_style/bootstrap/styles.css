@@ -1,0 +1,18 @@
+:root {
+  --app-main-overflow: auto;
+}
+
+html:has(body.app) {
+  height: 100dvh;
+}
+
+body.app {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end footer-start] auto [footer-end];
+  gap: 0;
+
+  main {
+    overflow-y: var(--app-main-overflow);
+  }
+}

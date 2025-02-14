@@ -1,0 +1,67 @@
+{% load static %}<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% block head_title %}
+        {% if title %}{{ title }}{% if site_title %} - {% endif %}{% endif %}
+        {{ site_title }}
+      {% endblock %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "django_style/bootstrap/styles.css" %}">
+  </head>
+  <body{% if STYLE_IS_APP %} class="app"{% endif %}>
+    {% block header %}
+      <div class="container{% if STYLE_IS_APP %}-flex px-4 border-bottom{% endif %}">
+        <header class="d-flex flex-wrap justify-content-center py-3{% if not STYLE_IS_APP %} border-bottom mb-4{% endif %}">
+          {% if site_title %}
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+              <span class="fs-4">{{ site_title }}</span>
+            </a>
+          {% endif %}
+
+          <ul class="nav nav-pills">
+            {% for nav_item in site_nav %}
+              <li class="nav-item">
+                <a
+                  class="nav-link{% if nav_item.url == request.path %} active" aria-current="page{% endif %}"
+                  href="{{ nav_item.url }}"
+                >{{ nav_item.label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </header>
+      </div>
+    {% endblock %}
+
+    <main class="container{% if STYLE_IS_APP %}-flex{% else %} my-4{% endif %}">
+      {% block main %}
+        {% block title %}
+          <h1>{{ title }}</h1>
+        {% endblock %}
+        {% block content %}{% endblock %}
+      {% endblock %}
+    </main>
+
+    {% block footer %}
+      <footer class="container{% if STYLE_IS_APP %}-flex px-4{% endif %} border-top py-3">
+        {% if footer_nav %}
+          <nav>
+              <ul class="nav">
+                {% for nav_item in footer_nav %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ nav_item.url }}">{{ nav_item.label }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </nav>
+        {% endif %}
+      </footer>
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
