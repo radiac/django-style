@@ -1,6 +1,6 @@
 :root {
   --colour-primary: #6ddcbd;
-  --colour-secondary: #2e3b39;
+  --colour-fg: #2e3b39;
   --colour-highlight: #aa2247;
   --colour-fade: #e6e9ee;
   --colour-text: #525252;
@@ -30,7 +30,7 @@ h3 {
 }
 
 a {
-  color: var(--colour-secondary);
+  color: var(--colour-fg);
 
   &:hover {
     color: var(--colour-highlight);
@@ -138,7 +138,7 @@ header {
       width: 26px;
       height: 26px;
       justify-self: end;
-      background-color: var(--colour-secondary);
+      background-color: var(--colour-fg);
       mask: url('menu.svg') no-repeat center / cover;
     }
 
@@ -284,7 +284,7 @@ input[type="reset"] {
   display: inline-block;
   padding: 0.8rem;
   background-color: var(--colour-primary);
-  color: var(--colour-secondary);
+  color: var(--colour-fg);
   border: 0;
   border-radius: 5px;
   text-decoration: none;
@@ -307,7 +307,7 @@ footer {
   color: color-mix(in oklab, var(--colour-text), #fff);
 
   a {
-    color: color-mix(in oklab, var(--colour-secondary), #fff);
+    color: color-mix(in oklab, var(--colour-fg), #fff);
 
 
     &:hover {
