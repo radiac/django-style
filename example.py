@@ -114,7 +114,8 @@ app.templates = {
                 <div class="app-toolbar">Toolbar</div>
                 <div class="app-body">
                     <h1>{{ title }}</h1>
-                    <p>Example app layout defines a sidebar and toolbar, within the theme's header and footer.</p>
+                    <p>Example app. The theme defines the sticky header and footer; any
+                    sidebar or toolbar are left for the app to implement as needed.</p>
                 </div>
             </div>
         </div>
@@ -136,6 +137,9 @@ app.templates = {
             }
             .app-body {
                 padding: 1rem;
+                &>*:first-child {
+                  margin-top: 0;
+                }
             }
         </style>
     """,
