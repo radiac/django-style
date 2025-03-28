@@ -1,0 +1,98 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block head_title %}
+        {% if title %}{{ title }}{% if site_title %} - {% endif %}{% endif %}
+        {{ site_title }}
+      {% endblock %}
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="{% static "django_style/tailwind/site.js" %}" async></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 flex flex-col h-screen">
+
+  {% block header %}
+    <header class="bg-white {% if STYLE_IS_APP%}border-b-2 border-gray-300{% else %}shadow-md{% endif %}">
+      <!-- Desktop menu -->
+      <nav class="flex items-center justify-between p-6 lg:px-8{% if not STYLE_IS_APP %} mx-auto max-w-7xl{% endif %}" aria-label="Global">
+        <div class="flex lg:flex-1">
+          {% if site_title %}
+            <h1 class="-m-1.5 p-1.5 text-lg font-bold">{{ site_title }}</h1>
+          {% endif %}
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" data-toggle="menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+            <span class="sr-only">Open main menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          {% for nav_item in site_nav %}
+            <a href="{{ nav_item.url }}" class="text-sm/6 font-semibold {% if request.path == nav_item.url %}text-blue-600{% else %}text-gray-900{% endif %}">{{ nav_item.label }}</a>
+          {% endfor %}
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div data-name="menu" class="hidden" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 z-10"></div>
+        <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              {% if site_title %}
+                <h1 class="-m-1.5 p-1.5 text-lg font-bold">{{ site_title }}</h1>
+              {% endif %}
+            </a>
+            <button type="button" data-toggle="menu" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+              <span class="sr-only">Close menu</span>
+              <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="space-y-2 py-6">
+                {% for nav_item in site_nav %}
+                  <a href="{{ nav_item.url }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold {% if request.path == nav_item.url %}text-blue-600 hover:bg-blue-50{% else %}text-gray-900 hover:bg-gray-50{% endif %}">{{ nav_item.label }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  {% endblock %}
+
+  <main class="flex-grow{% if not STYLE_IS_APP %} container mx-auto max-w-7xl p-6 lg:px-8{% endif %}">
+    {% block main %}
+      {% block title %}
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">{{ title }}</h1>
+      {% endblock %}
+      {% block content %}{% endblock %}
+    {% endblock %}
+  </main>
+
+  {% block footer %}
+    <footer class="bg-white {% if STYLE_IS_APP %}border-t-2 border-gray-300{% else %}shadow mt-6{% endif %}" text-center">
+      {% if footer_nav %}
+        <nav class="p-6 lg:px-8{% if not STYLE_IS_APP %} container mx-auto max-w-7xl{% endif %}">
+          <ul class="flex gap-4">
+            {% for nav_item in footer_nav %}
+              <li{% if request.path == nav_item.url %} class="active"{% endif %}>
+                <a href="{{ nav_item.url }}" class="text-sm/6 text-gray-700 {% if request.path == nav_item.url %}font-semibold{% endif %}">{{ nav_item.label }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </footer>
+  {% endblock %}
+</body>
+</html>

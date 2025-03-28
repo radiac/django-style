@@ -14,29 +14,31 @@
   </head>
   <body{% if STYLE_IS_APP %} class="app"{% endif %}>
     {% block header %}
-      <div class="container{% if STYLE_IS_APP %}-flex px-4 border-bottom{% endif %}">
-        <header class="d-flex flex-wrap justify-content-center py-3{% if not STYLE_IS_APP %} border-bottom mb-4{% endif %}">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary{% if STYLE_IS_APP %} border-bottom{% endif %}">
+        <div class="container{% if STYLE_IS_APP %}-fluid px-4{% endif %}"">
           {% if site_title %}
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-              <span class="fs-4">{{ site_title }}</span>
-            </a>
+            <a class="navbar-brand" href="#">{{ site_title }}</a>
           {% endif %}
-
-          <ul class="nav nav-pills">
-            {% for nav_item in site_nav %}
-              <li class="nav-item">
-                <a
-                  class="nav-link{% if nav_item.url == request.path %} active" aria-current="page{% endif %}"
-                  href="{{ nav_item.url }}"
-                >{{ nav_item.label }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </header>
-      </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-end">
+              {% for nav_item in site_nav %}
+                <li class="nav-item">
+                  <a
+                    class="nav-link{% if nav_item.url == request.path %} active" aria-current="page{% endif %}"
+                    href="{{ nav_item.url }}"
+                  >{{ nav_item.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </nav>
     {% endblock %}
 
-    <main class="container{% if STYLE_IS_APP %}-flex{% else %} my-4{% endif %}">
+    <main class="container{% if STYLE_IS_APP %}-fluid{% else %} my-4{% endif %}">
       {% block main %}
         {% block title %}
           <h1>{{ title }}</h1>
@@ -46,7 +48,7 @@
     </main>
 
     {% block footer %}
-      <footer class="container{% if STYLE_IS_APP %}-flex px-4{% endif %} border-top py-3">
+      <footer class="container{% if STYLE_IS_APP %}-fluid px-4{% endif %} border-top py-3">
         {% if footer_nav %}
           <nav>
               <ul class="nav">

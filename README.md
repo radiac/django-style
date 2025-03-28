@@ -4,7 +4,8 @@ Basic tasteful designs for your Django project, with sensible defaults.
 
 Features:
 
-* Themes for plain CSS and Bootstrap 5
+* Themes for plain CSS, Tailwind 4, and Bootstrap 5
+* Mobile support
 * App layout for content with a complex UI
 * Basic menu support
 
@@ -12,9 +13,11 @@ This project won't replace a proper design, but can help make your prototypes pr
 
 Pairs particularly well with [nanodjango](https://github.com/radiac/nanodjango/).
 
-To see a live example, clone this repository and run:
+To play with a live example, download
+[example.py](https://github.com/radiac/django-style/blob/main/example.py)
+and run with [uv](https://docs.astral.sh/uv/getting-started/installation/):
 
-  uvx nanodjango run example.py
+  uvx --with django-style nanodjango run example.py
 
 
 ### Installation
@@ -36,7 +39,7 @@ INSTALLED_APPS = [
 
 and optionally configure using the settings below.
 
-Now just extend `base.html` in your templates, and
+Now just `{% extend "base.html" %}` in your templates, and
 
 * define a `{% block content %}`
 * pass a `title` and a `site_title` in your context
@@ -56,8 +59,13 @@ Options:
 
 * `simple` - a plain CSS theme
 * `bootstrap` - a Bootstrap 5 theme
+* `tailwind` - a Tailwind 4 theme
 
 Default: `STYLE_THEME = "simple"`
+
+Note: the tailwind theme uses the
+[CDN distribution](https://tailwindcss.com/docs/installation/play-cdn)
+which they say is designed for development purposes and is not intended for production.
 
 
 #### `STYLE_IS_APP`

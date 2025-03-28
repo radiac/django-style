@@ -2,7 +2,7 @@
   --colour-primary: #6ddcbd;
   --colour-fg: #2e3b39;
   --colour-highlight: #aa2247;
-  --colour-fade: #e6e9ee;
+  --colour-fade: #f9fcfb;
   --colour-text: #525252;
 
   --gap: 25px;
@@ -303,7 +303,7 @@ input[type="reset"] {
 
 footer {
   padding: calc(var(--gap) /2) 0;
-  border-top: 1px solid var(--colour-fade);
+  border-top: 1px solid color-mix(in oklab, var(--colour-text), #fff);
   color: color-mix(in oklab, var(--colour-text), #fff);
 
   a {

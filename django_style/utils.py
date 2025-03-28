@@ -1,5 +1,7 @@
 from django.urls import reverse
 
+from .constants import THEMES
+
 
 class Nav:
     """
@@ -20,4 +22,6 @@ def get_base(theme: str) -> str:
 
         render(..., context={"STYLE_BASE": get_base("simple")})
     """
+    if theme not in THEMES:
+        raise ValueError(f"Unknown django-style theme: {theme}")
     return f"django_style/{theme}/base.html"
