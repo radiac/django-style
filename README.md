@@ -152,3 +152,14 @@ def my_view(request)
         },
     )
 ```
+
+
+## Development
+
+Fork and clone the repository, then run the example using your local copy of django-style:
+
+```
+git clone https://github.com/radiac/django-style.git
+cd django-style
+uvx nanodjango run example.py
+```
