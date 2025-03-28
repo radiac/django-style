@@ -14,11 +14,12 @@ This project won't replace a proper design, but can help make your prototypes pr
 Pairs particularly well with [nanodjango](https://github.com/radiac/nanodjango/).
 
 To play with a live example, download
-[example.py](https://github.com/radiac/django-style/blob/main/example.py)
+[example.py](https://raw.githubusercontent.com/radiac/django-style/refs/heads/main/example.py)
 and run with [uv](https://docs.astral.sh/uv/getting-started/installation/):
 
-  uvx --with django-style nanodjango run example.py
-
+```
+uvx --with django-style nanodjango run example.py
+```
 
 ### Installation
 
