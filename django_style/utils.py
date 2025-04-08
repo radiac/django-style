@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 from .constants import THEMES
 
@@ -11,7 +11,7 @@ class Nav:
     def __init__(self, label: str, view: str):
         self.label = label
         self.view = view
-        self.url = reverse(view)
+        self.url = reverse_lazy(view)
 
 
 def get_base(theme: str) -> str:

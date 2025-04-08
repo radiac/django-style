@@ -1,0 +1,73 @@
+[project]
+name = "django-style"
+description = "Basic tasteful designs for your Django project"
+dynamic = ["version"]
+authors = [
+    { name="Richard Terry", email="code@radiac.net" },
+]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Django",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+keywords = ["django", "style", "theme"]
+requires-python = ">=3.7"
+dependencies = [
+    "Django>=4.2",
+]
+
+[project.urls]
+"Homepage" = "https://radiac.net/projects/django-style/"
+"Documentation" = "https://django-style.readthedocs.io/en/latest/"
+"Source" = "https://github.com/radiac/django-style"
+"Bug Tracker" = "https://github.com/radiac/django-style/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["django_style*"]
+exclude = ["docs*", "tests*", "src*", "dist*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "django_style.__version__"}
+
+[tool.pytest.ini_options]
+addopts = "--cov=django_style --cov-report=term --cov-report=html"
+testpaths = [
+    "tests",
+    "django_style",
+]
+pythonpath = [
+    ".",
+]
+DJANGO_SETTINGS_MODULE = "tests.test_project.settings"
+
+[tool.coverage.run]
+source = ["django_style"]
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F"]
+ignore = [
+    "E501",  # line length
+]
+exclude = [
+    ".tox",
+    ".git",
+    "*/static/CACHE/*",
+    "docs",
+    "node_modules",
+    "src",
+    "dist",
+]
+
+[tool.djlint]
+profile="django"
