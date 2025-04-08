@@ -9,4 +9,5 @@ Features:
 
 * Simple plain CSS theme
 * Bootstrap theme
+* Tailwind theme
 * App mode
