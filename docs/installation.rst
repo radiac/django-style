@@ -23,19 +23,17 @@ Then add to ``settings.INSTALLED_APPS``:
 This will also register a template context manager, and should be all most projects
 need.
 
-In most cases, you can go onto :doc:`usage`.
-
 
 Further Django setup
 ====================
 
-Normally you don't need to do anything else, but read this section if you have made
-changes to your ``TEMPLATES`` setting.
+This section applies if you have made changes to your ``TEMPLATES`` setting, so in most
+cases, you can skip to :ref:`settings`.
 
 Django Style currently only provides Django templates, so you need to be using the
 Django template engine.
 
-Because it provides its own templates, Django needs check app dirs.
+Django also needs to be configured to check app dirs.
 
 You either need:
 
