@@ -13,7 +13,7 @@ Features:
 
 This project won't replace a proper design, but can help make your prototypes pretty.
 
-Pairs particularly well with [nanodjango](https://github.com/radiac/nanodjango/).
+Pairs particularly well with `nanodjango <https://github.com/radiac/nanodjango/>`_.
 
 .. toctree::
     :maxdepth: 2

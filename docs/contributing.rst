@@ -25,7 +25,10 @@ Testing
 
 It's always easier to merge PRs when they come with tests.
 
-Run the tests with pytest::
+Run the tests with pytest:
+
+
+.. code-block:: bash
 
     pip install -r tests/requirements.txt
     pytest
