@@ -1,24 +1,26 @@
-=======
-crondir
-=======
+============
+django-style
+============
 
-Manage your user crontab with snippets in a cron.d directory in your home.
+Basic tasteful designs for your Django project, with sensible defaults.
 
-Simplifies the automated management of cron tasks in the user space. Snippets are
-concatenated from your cron.d into the crontab.
+Features:
 
-- Store and manage crontab snippets in separate files
-- Does not interfere with existing crontab entries
-- Backs up crontab each time it builds
-- Everything configurable
+* Themes for plain CSS, Tailwind 4, and Bootstrap 5
+* Mobile support
+* App layout for content with a complex UI
+* Basic menu support
+
+This project won't replace a proper design, but can help make your prototypes pretty.
+
+Pairs particularly well with [nanodjango](https://github.com/radiac/nanodjango/).
 
 .. toctree::
     :maxdepth: 2
     :caption: Contents:
 
-    quickstart
-    commands
-    environment
-    api
+    installation
+    usage
+    menus
     changelog
     contributing
