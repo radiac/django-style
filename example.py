@@ -3,7 +3,7 @@ Example demonstrating all the themes and layout options
 
 Usage::
 
-    uvx nanodjango run example.py
+    uvx --with django-style nanodjango run example.py
 
 Thanks to Pirate Ipsum (https://pirateipsum.me/) for the sample copy.
 """
