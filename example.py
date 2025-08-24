@@ -13,7 +13,6 @@ from django_style import Nav, get_base
 from nanodjango import Django
 
 app = Django(
-    EXTRA_APPS=["django_style"],
     STYLE_IS_APP=False,
 )
 
