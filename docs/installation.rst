@@ -23,9 +23,18 @@ Then add to ``settings.INSTALLED_APPS``:
 This will also register a template context manager, and should be all most projects
 need.
 
+Installing with Nanodjango
+--------------------------
+
+Nanodjango has a plugin system which will automatically detect when django-style is in
+your python environment, and add it to the ``INSTALLED_APPS``.
+
+Once you have run ``pip install django-style`` you can move straight on to
+:ref:`settings` or :doc:`usage`.
+
 
 Further Django setup
-====================
+--------------------
 
 This section applies if you have made changes to your ``TEMPLATES`` setting, so in most
 cases, you can skip to :ref:`settings`.
@@ -59,6 +68,10 @@ Configure Django Style
 
 These settings are defined globally in your Django settings. They can also be
 overridden by individual views - see :doc:`usage` for more information.
+
+For a full Django installation, put these settings in your ``settings.py``, or for
+nanodjango pass them into the ``Django(..)`` constructor.
+
 
 ``STYLE_THEME``
 ---------------

@@ -37,7 +37,8 @@ uvx --with django-style nanodjango run example.py
     pip install django-style
     ```
 
-2.  Add it to `INSTALLED_APPS` in your `settings.py`, and optionally configure it:
+2.  **For Django**: Add it to `INSTALLED_APPS` in your `settings.py`, and optionally
+    configure it:
     ```
     INSTALLED_APPS = [
         ...
@@ -48,12 +49,10 @@ uvx --with django-style nanodjango run example.py
     STYLE_IS_APP = True  # enable app layout (default is False)
     ```
 
-    or if using nanodjango:
+    **For nanodjango**: it will automatically add itself to INSTALLED_APPS; you can
+    configure it using the ``Django`` constructor::
     ```
-    app = Django(
-        EXTRA_APPS=["django_style"],
-        STYLE_THEME="tailwind"
-    )
+    app = Django(STYLE_THEME="tailwind")
     ```
 
 3.  Extend `base.html` in your templates:
@@ -63,4 +62,3 @@ uvx --with django-style nanodjango run example.py
         <p>Hello world</p>
     {% endblock %}
     ```
-

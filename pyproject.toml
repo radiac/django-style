@@ -19,6 +19,9 @@ dependencies = [
     "Django>=4.2",
 ]
 
+[project.entry-points.nanodjango]
+django_style = "django_style.nanodjango"
+
 [project.urls]
 "Homepage" = "https://radiac.net/projects/django-style/"
 "Documentation" = "https://django-style.readthedocs.io/en/latest/"
