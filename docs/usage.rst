@@ -16,14 +16,38 @@ Django Style makes the theme's base template available at ``base.html``:
 Template blocks
 ===============
 
-The base templates define the following blocks:
+The base templates define the following empty blocks for you to add content:
 
-* ``{% block content %}`` - the main content of the page
 * ``{% block head_title %}`` - the ``<head><title>`` contents
+* ``{% block content %}`` - the main content of the page
+* ``{% block extra_head %}`` - at the bottom of the ``<head>``
+
+Example usage:
+
+.. code-block:: html+django
+
+    {% block extra_head %}
+      <script src="{% static "site.js" %}"></script>
+    {% endblock %}
+
+
+They also wrap their elements with the following blocks, for you to extend or override:
+
+* ``{% block body %}`` - the ``<body>`` contents
 * ``{% block header %}`` - the top header block
-* ``{% block main %}`` - the wrapper for the content of the page (title plus content)
-* ``{% block content %}`` - the main content of the page (without title)
+* ``{% block main %}`` - wrapper for the content of the page (title plus content)
+* ``{% block site_nav_items %}`` - the site nav items
+* ``{% block footer_nav_items %}`` - the footer nav items
 * ``{% block footer %}`` - the bottom footer block
+
+Example usage:
+
+.. code-block:: html+django
+
+    {% block site_nav_items %}
+      {{ block.super }}
+      <li><img src="{% static "images/smiley-face.webp" %}"></li>
+    {% endblock %}
 
 
 Template variables
