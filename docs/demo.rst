@@ -2,7 +2,7 @@
 Demo
 ====
 
-.. raw::
+.. raw:: html
 
     <iframe
       width="100%"
