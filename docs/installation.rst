@@ -83,8 +83,14 @@ Django Style comes with several themes to fit your development preferences.
 Options:
 
 * ``simple`` - a plain CSS theme
+  (`demo <https://radiac-django-style-demo.nanodjango.dev/?__autorun__=1>`_,
+  `app demo <https://radiac-django-style-demo.nanodjango.dev/app/>`_)
 * ``bootstrap`` - a Bootstrap 5 theme
+  (`demo <https://radiac-django-style-demo.nanodjango.dev/bootstrap/>`_,
+  `app demo <https://radiac-django-style-demo.nanodjango.dev/bootstrap/app/>`_)
 * ``tailwind`` - a Tailwind 4 theme
+  (`demo <https://radiac-django-style-demo.nanodjango.dev/tailwind/`_,
+  `app demo <https://radiac-django-style-demo.nanodjango.dev/tailwind/app/>`_)
 
 Default: ``STYLE_THEME = "simple"``
 
@@ -110,3 +116,5 @@ height, the header is always visible (and footer if defined), and only the conte
 is scrollable.
 
 Default: ``STYLE_IS_APP = False``
+
+
