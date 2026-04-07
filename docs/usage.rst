@@ -60,6 +60,10 @@ The base templates use the following template variables:
 * ``site_nav`` - a list of menu items - see :doc:`menus` for more information
 * ``footer_nav`` - a list of menu items - see :doc:`menus` for more information
 
+``site_title``, ``site_nav`` and ``footer_nav`` can be set globally via
+:ref:`settings` (``STYLE_SITE_TITLE``, ``STYLE_SITE_NAV``, ``STYLE_FOOTER_NAV``).
+Values passed in the view context will override the global settings.
+
 
 Override settings
 =================

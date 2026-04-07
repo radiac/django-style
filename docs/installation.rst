@@ -118,3 +118,38 @@ is scrollable.
 Default: ``STYLE_IS_APP = False``
 
 
+``STYLE_SITE_TITLE``
+--------------------
+
+Default site title, shown in the header and ``<title>`` tag.
+Can be overridden by a view's context.
+
+If not set, Django Style will attempt to detect a sensible default from the project name
+(using ``ND_APP_NAME`` for nanodjango projects, or the first segment of
+``ROOT_URLCONF`` for standard Django projects).
+
+Set to an empty string to keep this blank: ``STYLE_SITE_TITLE = ""``
+
+
+``STYLE_SITE_NAV``
+------------------
+
+Default navigation menu items shown in the header.
+Can be overridden by a view's context.
+
+The standard templates expect a list of :doc:`menu items <menus>`.
+
+Default: ``STYLE_SITE_NAV = []``
+
+
+``STYLE_FOOTER_NAV``
+--------------------
+
+Default navigation menu items shown in the footer.
+Can be overridden by a view's context.
+
+The standard templates expect a list of :doc:`menu items <menus>`.
+
+Default: ``STYLE_FOOTER_NAV = []``
+
+
