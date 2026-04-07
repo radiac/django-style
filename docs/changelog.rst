@@ -15,6 +15,7 @@ Features
 Changes:
 
 * If no site title is set, it will try to detect the project's name and title-case that
+* Simplify app examples to make it clearer what they do
 
 Theme ``simple``:
 
