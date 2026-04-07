@@ -2,6 +2,15 @@
 Changelog
 =========
 
+0.3.0 - TBC
+-----------
+
+Features
+
+* Add block ``messages`` to display Django's
+ `messages framework <https://docs.djangoproject.com/en/6.0/ref/contrib/messages/>`_
+
+
 0.2.0 - 2026-03-06
 ------------------
 

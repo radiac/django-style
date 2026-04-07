@@ -42,6 +42,19 @@
         </nav>
       {% endblock %}
 
+      {% block messages %}
+        {% if messages %}
+          <div class="container{% if STYLE_IS_APP %}-fluid{% else %} my-3{% endif %}">
+            {% for message in messages %}
+              <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags %}{{ message.tags }}{% else %}info{% endif %} alert-dismissible" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endblock %}
+
       <main class="container{% if STYLE_IS_APP %}-fluid{% else %} my-4{% endif %}">
         {% block main %}
           {% block title %}
