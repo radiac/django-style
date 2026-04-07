@@ -104,9 +104,8 @@ which they say is designed for development purposes and is not intended for prod
 
 Control the layout of the theme.
 
-App layout is intended for a template where the content has a fixed UI layout, like a
-dashboard or email application which needs toolbars, sidebars and multiple panes. (These
-elements are left for you to implement).
+App layout is intended for a template where the content has a fixed fixed header and
+footer, like a dashboard or email application.
 
 If ``STYLE_IS_APP = False``, the theme will use the normal layout, where the header and
 footer scroll with the content, and there is a comfortable maximum width.
@@ -114,6 +113,9 @@ footer scroll with the content, and there is a comfortable maximum width.
 If ``STYLE_IS_APP = True``, the theme will use the app layout; take up the full window
 height, the header is always visible (and footer if defined), and only the content area
 is scrollable.
+
+Note that the content area will have no padding in app mode - this means you can define
+your own sidebars or toolbars, but will have to have add padding yourself.
 
 Default: ``STYLE_IS_APP = False``
 

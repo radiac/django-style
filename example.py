@@ -9,8 +9,9 @@ Thanks to Pirate Ipsum (https://pirateipsum.me/) for the sample copy.
 """
 
 from django import forms
-from django_style import Nav, get_base
 from nanodjango import Django
+
+from django_style import Nav, get_base
 
 app = Django(
     STYLE_IS_APP=False,
@@ -76,77 +77,43 @@ def simple_app(request):
     )
 
 
-app.templates = {
-    "simple.html": """
-        {% extends 'base.html' %}
-        {% block content %}
-            <p>This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.</p>
-
-            <h2>Heading Level 2</h2>
-            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
-            <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
-
-            <form action=".">
-            {{ form.as_p }}
-            <div class="buttons">
-                <input type="submit">
-                <a href="." class="button secondary">Cancel</a>
-            </div>
-            </form>
-
-            <h3>Heading Level 3</h3>
-            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
-            <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
-
-            <h4>Heading Level 4</h4>
-            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
-            <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
-        {% endblock %}
-    """,
-    "simple_app.html": """
-        {% extends 'base.html' %}
-        {% block main %}
-            {% include "example_app_body.html" %}
-        {% endblock %}
-    """,
-    "example_app_body.html": """
-        {# Standard example app body, independent of theme #}
-        <div class="app-container">
-            <div class="app-sidebar">Sidebar</div>
-            <div>
-                <div class="app-toolbar">Toolbar</div>
-                <div class="app-body">
-                    <h1>{{ title }}</h1>
-                    <p>Example app. The theme defines the sticky header and footer; any
-                    sidebar or toolbar are left for the app to implement as needed.</p>
-                </div>
-            </div>
+app.templates["simple.html"] = """
+    {% extends 'base.html' %}
+    {% block content %}
+        {% include "simple_content.html" %}
+    {% endblock %}
+"""
+app.templates["simple_app.html"] = """
+    {% extends 'base.html' %}
+    {% block main %}
+        <div style="padding: 1rem">
+            {% include "simple_content.html" %}
         </div>
+    {% endblock %}
+"""
+app.templates["simple_content.html"] = """
+    <p>This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.</p>
 
-        <style>
-            .app-container {
-                display: grid;
-                width: 100%;
-                height: 100%;
-                grid-template-columns: auto 1fr;
-            }
-            .app-sidebar {
-                border-right: 1px solid #aaa;
-                padding: 1rem;
-            }
-            .app-toolbar {
-                border-bottom: 1px solid #aaa;
-                padding: 1rem;
-            }
-            .app-body {
-                padding: 1rem;
-                &>*:first-child {
-                  margin-top: 0;
-                }
-            }
-        </style>
-    """,
-}
+    <h2>Heading Level 2</h2>
+    <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
+
+    <form action=".">
+    {{ form.as_p }}
+    <div class="buttons">
+        <input type="submit">
+        <a href="." class="button secondary">Cancel</a>
+    </div>
+    </form>
+
+    <h3>Heading Level 3</h3>
+    <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
+
+    <h4>Heading Level 4</h4>
+    <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
+"""
 
 
 class BootstrapForm(forms.Form):
@@ -232,42 +199,43 @@ def boostrap_app(request):
     )
 
 
-app.templates.update(
-    {
-        "bootstrap.html": """
-        {% extends 'base.html' %}
-        {% block content %}
-            <p>This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.</p>
+app.templates["bootstrap.html"] = """
+    {% extends 'base.html' %}
+    {% block content %}
+        {% include "bootstrap_content.html" %}
+    {% endblock %}
+"""
+app.templates["bootstrap_app.html"] = """
+    {% extends 'base.html' %}
+    {% block main %}
+        <div style="padding: 1rem">
+            {% include "bootstrap_content.html" %}
+        </div>
+    {% endblock %}
+"""
+app.templates["bootstrap_content.html"] = """
+    <p>This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.</p>
 
-            <h2>Heading Level 2</h2>
-            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
-            <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
+    <h2>Heading Level 2</h2>
+    <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
 
-            <form action=".">
-            {{ form.as_p }}
-            <div class="my-4">
-                <input type="submit" class="btn btn-primary">
-                <a href="." class="btn btn-secondary">Cancel</a>
-            </div>
-            </form>
+    <form action=".">
+    {{ form.as_p }}
+    <div class="my-4">
+        <input type="submit" class="btn btn-primary">
+        <a href="." class="btn btn-secondary">Cancel</a>
+    </div>
+    </form>
 
-            <h3>Heading Level 3</h3>
-            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
-            <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
+    <h3>Heading Level 3</h3>
+    <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
 
-            <h4>Heading Level 4</h4>
-            <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
-            <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
-        {% endblock %}
-    """,
-        "bootstrap_app.html": """
-        {% extends 'base.html' %}
-        {% block main %}
-            {% include "example_app_body.html" %}
-        {% endblock %}
-    """,
-    }
-)
+    <h4>Heading Level 4</h4>
+    <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
+    <p>Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.</p>
+"""
 
 
 class TailwindForm(forms.Form):
@@ -364,57 +332,58 @@ def tailwind_app(request):
     )
 
 
-app.templates.update(
-    {
-        "tailwind.html": """
-        {% extends 'base.html' %}
-        {% block content %}
-            <p class="text-gray-700 mb-4">
-                This is a template for
-                <a href="https://www.djangoproject.com/" target="_blank" class="text-blue-500 hover:underline">Django</a>.
-            </p>
+app.templates["tailwind.html"] = """
+    {% extends 'base.html' %}
+    {% block content %}
+        {% include "tailwind_content.html" %}
+    {% endblock %}
+"""
+app.templates["tailwind_app.html"] = """
+    {% extends 'base.html' %}
+    {% block main %}
+        <div style="padding: 1rem">
+            {% include "tailwind_content.html" %}
+        </div>
+    {% endblock %}
+"""
+app.templates["tailwind_content.html"] = """
+    <p class="text-gray-700 mb-4">
+        This is a template for
+        <a href="https://www.djangoproject.com/" target="_blank" class="text-blue-500 hover:underline">Django</a>.
+    </p>
 
-            <h2 class="text-2xl font-bold text-gray-800 mt-6 mb-4">Heading Level 2</h2>
-            <p class="text-gray-600 mb-4">
-                Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
-            </p>
-            <p class="text-gray-600 mb-4">
-                Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-            </p>
+    <h2 class="text-2xl font-bold text-gray-800 mt-6 mb-4">Heading Level 2</h2>
+    <p class="text-gray-600 mb-4">
+        Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
+    </p>
+    <p class="text-gray-600 mb-4">
+        Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
+    </p>
 
-            <form action="." class="mt-6">
-                {{ form.as_p }}
-                <div class="my-4">
-                   <input type="submit" value="Submit" class="bg-blue-500 text-white
-                   font-semibold py-2 px-4 rounded hover:bg-blue-600 transition
-                   duration-200">
+    <form action="." class="mt-6">
+        {{ form.as_p }}
+        <div class="my-4">
+            <input type="submit" value="Submit" class="bg-blue-500 text-white
+            font-semibold py-2 px-4 rounded hover:bg-blue-600 transition
+            duration-200">
 
-                   <a href="." class="bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-400 transition duration-200 inline-block">Cancel</a>
-                </div>
-            </form>
+            <a href="." class="bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-400 transition duration-200 inline-block">Cancel</a>
+        </div>
+    </form>
 
-            <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-4">Heading Level 3</h3>
-            <p class="text-gray-600 mb-4">
-                Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
-            </p>
-            <p class="text-gray-600 mb-4">
-                Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-            </p>
+    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-4">Heading Level 3</h3>
+    <p class="text-gray-600 mb-4">
+        Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
+    </p>
+    <p class="text-gray-600 mb-4">
+        Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
+    </p>
 
-            <h4 class="text-lg font-medium text-gray-800 mt-6 mb-4">Heading Level 4</h4>
-            <p class="text-gray-600 mb-4">
-                Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
-            </p>
-            <p class="text-gray-600 mb-4">
-                Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
-            </p>
-        {% endblock %}
-    """,
-        "tailwind_app.html": """
-        {% extends 'base.html' %}
-        {% block main %}
-            {% include "example_app_body.html" %}
-        {% endblock %}
-    """,
-    }
-)
+    <h4 class="text-lg font-medium text-gray-800 mt-6 mb-4">Heading Level 4</h4>
+    <p class="text-gray-600 mb-4">
+        Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
+    </p>
+    <p class="text-gray-600 mb-4">
+        Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors. Bring a spring upon her cable holystone blow the man down spanker Shiver me timbers to go on account lookout wherry doubloon chase. Belay yo-ho-ho keelhaul squiffy black spot yardarm spyglass sheet transom heave to.
+    </p>
+"""
