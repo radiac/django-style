@@ -15,13 +15,16 @@ Features
 Changes:
 
 * If no site title is set, it will try to detect the project's name and title-case that
-* Theme ``simple``:
 
 Theme ``simple``:
 
 * Add basic table styling
 * Increase specificity of CSS form selectors - fixes select2 issues
 * Hide footer if empty
+
+Theme ``tailwind``:
+
+* Fix app layout footer
 
 
 0.2.0 - 2026-03-06

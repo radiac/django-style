@@ -14,7 +14,7 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body class="bg-gray-50 text-gray-900 flex flex-col h-screen">
+<body class="bg-gray-50 text-gray-900 {% if STYLE_IS_APP %}grid grid-rows-[auto_1fr_auto] h-screen{% else %}flex flex-col min-h-screen{% endif %}">
   {% block body %}
 
     {% block header %}
@@ -91,7 +91,7 @@
       {% endif %}
     {% endblock %}
 
-    <main class="flex-grow{% if not STYLE_IS_APP %} container mx-auto max-w-7xl p-6 lg:px-8{% endif %}">
+    <main class="{% if STYLE_IS_APP %}overflow-y-auto min-h-0{% else %}flex-grow container mx-auto max-w-7xl p-6 lg:px-8{% endif %}">
       {% block main %}
         {% block title %}
           <h1 class="text-4xl font-bold text-gray-800 mb-6">{{ title }}</h1>
