@@ -8,13 +8,20 @@ Changelog
 Features
 
 * Add block ``messages`` to display Django's
- `messages framework <https://docs.djangoproject.com/en/6.0/ref/contrib/messages/>`_
+  `messages framework <https://docs.djangoproject.com/en/6.0/ref/contrib/messages/>`_
 * Add settings-level defaults for ``STYLE_SITE_TITLE``, ``STYLE_SITE_NAV`` and
   ``STYLE_FOOTER_NAV``
 
 Changes:
 
 * If no site title is set, it will try to detect the project's name and title-case that
+* Theme ``simple``:
+
+Theme ``simple``:
+
+* Add basic table styling
+* Increase specificity of CSS form selectors - fixes select2 issues
+* Hide footer if empty
 
 
 0.2.0 - 2026-03-06

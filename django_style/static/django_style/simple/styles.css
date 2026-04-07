@@ -267,25 +267,25 @@ form {
       display: block;
     }
 
-    label {
+    &>label {
       font-weight: 500;
       margin-bottom: .25rem;
     }
 
-    textarea {
+    &>textarea {
       min-height: 10em;
       field-sizing: content;
     }
 
-    .helptext {
+    &>.helptext {
       font-size: 0.8rem;
       font-style: italic;
       margin-top: .15rem;
     }
 
-    input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
-    textarea,
-    select {
+    &>input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    &>textarea,
+    &>select {
       width: 100%;
       max-width: 40rem;
       padding: .5rem .75rem;
@@ -293,21 +293,21 @@ form {
       border-radius: 3px;
     }
 
-    &:has(input[type="checkbox"],
-      input[type="radio"]) {
+    &:has(>input[type="checkbox"],
+      >input[type="radio"]) {
       display: grid;
       justify-content: start;
       grid-template-columns: content auto;
       column-gap: 0.3rem;
       align-items: center;
 
-      input {
+      &>input {
         grid-column: 1;
         grid-row: 1;
       }
 
-      label,
-      .helptext {
+      &>label,
+      &>.helptext {
         grid-column: 2;
         margin-top: 0;
         margin-bottom: 0;
@@ -316,6 +316,53 @@ form {
     }
   }
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+  thead {
+    border-bottom: 2px solid var(--colour-primary);
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      padding: .4rem .75rem;
+      color: var(--colour-fg);
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid var(--colour-fade);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: color-mix(in oklab, var(--colour-fade) 50%, #fff);
+      }
+    }
+
+    td {
+      padding: .5rem .75rem;
+      vertical-align: top;
+    }
+  }
+
+  tfoot {
+    border-top: 1px solid var(--colour-border);
+    color: color-mix(in oklab, var(--colour-text) 70%, #fff);
+    font-size: 0.9rem;
+
+    td {
+      padding: .4rem .75rem;
+    }
+  }
+}
+
 
 input,
 button,
@@ -360,6 +407,10 @@ input[type="reset"] {
 }
 
 footer {
+  &:not(:has(*)) {
+    display: none;
+  }
+
   padding: calc(var(--gap) /2) 0;
   border-top: 1px solid color-mix(in oklab, var(--colour-text), #fff);
   color: color-mix(in oklab, var(--colour-text), #fff);
