@@ -1,7 +1,14 @@
+# /// script
+# dependencies = ["nanodjango", "django-style"]
+# ///
 """
 Example demonstrating all the themes and layout options
 
 Usage::
+
+    uv run example.py
+
+or if you want to call nanodjango directly::
 
     uvx --with django-style nanodjango run example.py
 

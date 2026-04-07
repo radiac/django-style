@@ -21,7 +21,7 @@ Pairs particularly well with [nanodjango](https://github.com/radiac/nanodjango/)
 ### Example
 
 To play with a live example, you can try the
-[live demo](http://radiac-django-style-demo.nanodjango.dev),
+[live demo](https://radiac-django-style-demo.nanodjango.dev),
 or download
 [example.py](https://raw.githubusercontent.com/radiac/django-style/refs/heads/main/example.py)
 and run with [uv](https://docs.astral.sh/uv/getting-started/installation/):
