@@ -77,6 +77,16 @@ body.app {
   main {
     overflow-y: var(--app-main-overflow);
   }
+
+  ul.messages {
+    position: fixed;
+    position-anchor: --header;
+    top: anchor(bottom);
+    padding: .5rem 0 0 0;
+    right: 1rem;
+    width: min(400px, calc(100vw - 2rem));
+    z-index: 100;
+  }
 }
 
 header,
@@ -101,6 +111,7 @@ footer {
 }
 
 header {
+  anchor-name: --header;
   padding: calc(var(--gap) /2) 0;
   border-bottom: 2px solid var(--colour-primary);
   line-height: 1;

@@ -9,6 +9,7 @@ Thanks to Pirate Ipsum (https://pirateipsum.me/) for the sample copy.
 """
 
 from django import forms
+from django.contrib import messages as django_messages
 from nanodjango import Django
 
 from django_style import Nav, get_base
@@ -16,6 +17,13 @@ from django_style import Nav, get_base
 app = Django(
     STYLE_IS_APP=False,
 )
+
+
+def render(request, *args, **kwargs):
+    for level in ("debug", "info", "success", "warning", "error"):
+        for text in request.GET.getlist(level):
+            getattr(django_messages, level)(request, text)
+    return app.render(request, *args, **kwargs)
 
 
 class SimpleForm(forms.Form):
@@ -27,7 +35,7 @@ class SimpleForm(forms.Form):
 
 @app.route("/")
 def simple(request):
-    return app.render(
+    return render(
         request,
         "simple.html",
         context={
@@ -54,7 +62,7 @@ def simple(request):
 
 @app.route("/app/", name="simple_app")
 def simple_app(request):
-    return app.render(
+    return render(
         request,
         "simple_app.html",
         context={
@@ -92,7 +100,10 @@ app.templates["simple_app.html"] = """
     {% endblock %}
 """
 app.templates["simple_content.html"] = """
-    <p>This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.</p>
+    <p>
+        This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.
+        See it <a href=".?success=Success message!&error=Error message">with messages</a>.
+    </p>
 
     <h2>Heading Level 2</h2>
     <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
@@ -156,7 +167,7 @@ class BootstrapForm(forms.Form):
 
 @app.route("/bootstrap/", name="bootstrap")
 def boostrap(request):
-    return app.render(
+    return render(
         request,
         "bootstrap.html",
         context={
@@ -183,7 +194,7 @@ def boostrap(request):
 
 @app.route("/bootstrap/app/", name="bootstrap_app")
 def boostrap_app(request):
-    return app.render(
+    return render(
         request,
         "bootstrap_app.html",
         context={
@@ -223,7 +234,10 @@ app.templates["bootstrap_app.html"] = """
     {% endblock %}
 """
 app.templates["bootstrap_content.html"] = """
-    <p>This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.</p>
+    <p>
+        This is a template for <a href="https://www.djangoproject.com/" target="_blank">Django</a>.
+        See it <a href=".?success=Success message!&error=Error message">with messages</a>.
+    </p>
 
     <h2>Heading Level 2</h2>
     <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
@@ -289,7 +303,7 @@ class TailwindForm(forms.Form):
 
 @app.route("/tailwind/", name="tailwind")
 def tailwind(request):
-    return app.render(
+    return render(
         request,
         "tailwind.html",
         context={
@@ -316,7 +330,7 @@ def tailwind(request):
 
 @app.route("/tailwind/app/", name="tailwind_app")
 def tailwind_app(request):
-    return app.render(
+    return render(
         request,
         "tailwind_app.html",
         context={
@@ -359,6 +373,7 @@ app.templates["tailwind_content.html"] = """
     <p class="text-gray-700 mb-4">
         This is a template for
         <a href="https://www.djangoproject.com/" target="_blank" class="text-blue-500 hover:underline">Django</a>.
+        See it <a href=".?success=Success message!&error=Error message" class="text-blue-500 hover:underline">with messages</a>.
     </p>
 
     <h2 class="text-2xl font-bold text-gray-800 mt-6 mb-4">Heading Level 2</h2>

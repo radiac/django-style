@@ -39,12 +39,22 @@
               </ul>
             </div>
           </div>
+          {% if STYLE_IS_APP and messages %}
+            <div class="position-absolute top-100 end-0" style="z-index: 1050; width: min(400px, calc(100vw - 1.5rem));">
+              {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags %}{{ message.tags }}{% else %}info{% endif %} alert-dismissible mt-2 mx-2 mb-0" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
         </nav>
       {% endblock %}
 
       {% block messages %}
-        {% if messages %}
-          <div class="container{% if STYLE_IS_APP %}-fluid{% else %} my-3{% endif %}">
+        {% if messages and not STYLE_IS_APP %}
+          <div class="container my-3">
             {% for message in messages %}
               <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags %}{{ message.tags }}{% else %}info{% endif %} alert-dismissible" role="alert">
                 {{ message }}
