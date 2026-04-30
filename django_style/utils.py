@@ -8,10 +8,14 @@ class Nav:
     Describe a navigation item
     """
 
-    def __init__(self, label: str, view: str):
+    def __init__(self, label: str, view: str | None = None, url: str | None = None):
         self.label = label
         self.view = view
-        self.url = reverse_lazy(view)
+        if view and url:
+            raise ValueError(
+                "The view and url arguments to Nav are mutually exclusive."
+            )
+        self.url = url or reverse_lazy(view)
 
 
 def get_base(theme: str) -> str:
