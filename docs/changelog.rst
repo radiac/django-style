@@ -7,7 +7,8 @@ Changelog
 
 Changes:
 
-* Changed Python requirement to ``>=3.10`` (#3)
+* Add support for external URLs in ``Nav`` elements (#4)
+* Change Python requirement to ``>=3.10`` (#3)
 
 Theme simple:
 
@@ -24,7 +25,8 @@ Tailwind:
 
 Thanks to:
 
-* Víðir Valberg Guðmundsson (valberg) for Python version fix (#3) and external URLs (#4)
+* Víðir Valberg Guðmundsson (valberg) for Python version fix (#3) and
+  external URLs in ``Nav`` objects (#4)
 
 
 0.3.0 - 2026-04-07

@@ -10,8 +10,14 @@ Define your links in your template context with ``site_nav`` for header links, a
 These should be lists of objects with a ``url`` and ``label`` attribute - or a dict with
 those keys.
 
-For convenience Django Style comes with a ``Nav(label, view_name)`` object,
-where ``view_name`` is automatically resolved to a url using ``django.urls.reverse``.
+
+``Nav`` object
+==============
+
+For convenience Django Style comes with a ``Nav(label, view=None, url=None)`` object,
+where you provide either ``url`` as a URL string, or a ``view`` which is automatically
+resolved to a url using ``django.urls.reverse``.
+
 
 Example usage
 =============
