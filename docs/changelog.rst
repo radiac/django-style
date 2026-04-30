@@ -5,6 +5,10 @@ Changelog
 0.3.1 - 2026-04-30
 ------------------
 
+Changes:
+
+* Changed Python requirement to ``>=3.10`` (#3)
+
 Theme simple:
 
 * Fix header font sizes
@@ -16,8 +20,11 @@ Bootstrap:
 
 Tailwind:
 
-* Change site header from h1 to a, link to roo
+* Change site header from h1 to a, link to root
 
+Thanks to:
+
+* Víðir Valberg Guðmundsson (valberg) for Python version fix (#3)
 
 
 0.3.0 - 2026-04-07
