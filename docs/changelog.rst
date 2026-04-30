@@ -24,7 +24,7 @@ Tailwind:
 
 Thanks to:
 
-* Víðir Valberg Guðmundsson (valberg) for Python version fix (#3)
+* Víðir Valberg Guðmundsson (valberg) for Python version fix (#3) and external URLs (#4)
 
 
 0.3.0 - 2026-04-07
