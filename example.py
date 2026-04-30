@@ -27,6 +27,7 @@ app = Django(
 
 
 def render(request, *args, **kwargs):
+    # Helper so we can set django messages using the querystring
     for level in ("debug", "info", "success", "warning", "error"):
         for text in request.GET.getlist(level):
             getattr(django_messages, level)(request, text)

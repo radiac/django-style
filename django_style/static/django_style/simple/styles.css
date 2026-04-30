@@ -33,6 +33,22 @@ h6 {
   margin: 0 0 .5rem 0;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
 a {
   color: var(--colour-fg);
 
@@ -121,8 +137,15 @@ header {
   align-items: center;
   justify-content: start;
 
-  h1 {
+  .site-title {
     margin: 0;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   label[for="nav_toggle"],

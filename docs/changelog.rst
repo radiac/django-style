@@ -2,6 +2,24 @@
 Changelog
 =========
 
+0.3.1 - 2026-04-30
+------------------
+
+Theme simple:
+
+* Fix header font sizes
+* Change site header from h1 to a, link to root, reduce visual importance
+
+Bootstrap:
+
+* Fix header link to root
+
+Tailwind:
+
+* Change site header from h1 to a, link to roo
+
+
+
 0.3.0 - 2026-04-07
 ------------------
 

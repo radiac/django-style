@@ -23,7 +23,7 @@
         <nav class="flex items-center justify-between p-6 lg:px-8{% if not STYLE_IS_APP %} mx-auto max-w-7xl{% endif %}" aria-label="Global">
           <div class="flex lg:flex-1">
             {% if site_title %}
-              <h1 class="-m-1.5 p-1.5 text-lg font-bold">{{ site_title }}</h1>
+              <a href="/" class="-m-1.5 p-1.5 text-lg font-bold hover:underline">{{ site_title }}</a>
             {% endif %}
           </div>
           <div class="flex lg:hidden">
