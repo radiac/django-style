@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static "django_style/simple/styles.css" %}">
     {% block extra_head %}{% endblock %}
   </head>
-  <body{$ block body_attrs %}
+  <body{% block body_attrs %}
     class="{% block body_class %}{% if STYLE_IS_APP %}app{% endif %}{% endblock %}"
   {% endblock %}>
     {% block body %}
