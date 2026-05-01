@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="{% static "django_style/bootstrap/styles.css" %}">
     {% block extra_head %}{% endblock %}
   </head>
-  <body{% if STYLE_IS_APP %} class="app"{% endif %}>
+  <body{% block body_attrs %}
+    class="{% block body_class %}{% if STYLE_IS_APP %}app{% endif %}{% endblock %}"
+  {% endblock %}>
     {% block body %}
       {% block header %}
         <nav class="navbar navbar-expand-lg bg-body-tertiary{% if STYLE_IS_APP %} border-bottom{% endif %}">

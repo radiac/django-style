@@ -14,7 +14,9 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body class="bg-gray-50 text-gray-900 {% if STYLE_IS_APP %}grid grid-rows-[auto_1fr_auto] h-screen{% else %}flex flex-col min-h-screen{% endif %}">
+<body{$ block body_attrs %}
+  class="{% block body_class %}bg-gray-50 text-gray-900 {% if STYLE_IS_APP %}grid grid-rows-[auto_1fr_auto] h-screen{% else %}flex flex-col min-h-screen{% endif %}{% endblock %}"
+{% endblock %}>
   {% block body %}
 
     {% block header %}

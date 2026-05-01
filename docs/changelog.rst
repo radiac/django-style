@@ -2,6 +2,14 @@
 Changelog
 =========
 
+0.3.2 - 2026-05-01
+------------------
+
+Changes:
+
+* Add block ``body_attrs`` and ``body_class`` for changing body tag attributes
+
+
 0.3.1 - 2026-04-30
 ------------------
 

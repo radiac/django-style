@@ -50,6 +50,21 @@ Example usage:
     {% endblock %}
 
 
+The body tag itself can be customised with:
+
+* ``{% block body_attrs %}`` - the tag attributes for the ``<body>`` tag, including the
+  CSS class
+* ``{% block body_class %}`` - the tag attributes for the ``<body class="...">``
+  attribute
+* To maintain existing styling for both of these, ensure you include the super block,
+  eg:
+
+.. code-block:: html+django
+
+    {% block body_attrs %}{{ block.super }} data-foo="bar"{% endblock %}
+    {% block body_class %}{{ block.super }} homepage{% endblock %}
+
+
 Template variables
 ==================
 
